@@ -15,7 +15,7 @@ export class ResultEntity {
   )
   problems: ProblemEntity[];
 
-  @Column()
+  @Column('text')
   answer: string;
 
   @Column()
