@@ -6,8 +6,8 @@ export class ResultEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('int')
-  problem_id: number;
+  @Column({ name: 'problem_id', type: 'int' })
+  problemId: number;
 
   @OneToMany(
     type => ProblemEntity,

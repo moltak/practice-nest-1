@@ -5,8 +5,8 @@ export class ProblemEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  problem_text: string;
+  @Column({ name: 'problem_text' })
+  problemText: string;
 
   @Column('int')
   type: number;

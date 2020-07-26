@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Problems } from './payload/problem';
-import { Results } from './payload/result';
-import { Inputs } from './payload/input';
+import { Problems } from './dto/problem';
+import { Results } from './dto/result';
+import { Input, Inputs } from './dto/input';
 
 @Controller('/api')
 export class AppController {
@@ -14,7 +14,7 @@ export class AppController {
   }
 
   @Post('/submit')
-  submit(@Body('input') inputs: Inputs): Promise<Results> {
-    return this.appService.results(inputs);
+  submit(@Body() input: Inputs): Promise<Results> {
+    return this.appService.results(JSON.parse(input.input));
   }
 }

@@ -64,15 +64,17 @@ describe('AppController', () => {
 
       // when
       // then
-      expect((await controller.submit({ inputs: [] })).results).toHaveLength(2);
+      expect((await controller.submit({ input: '{}' })).results).toHaveLength(
+        2,
+      );
     });
 
     it('should match result with input', async () => {
       // given
-      const inputs = { inputs: [{ id: 1, answer: '1' }] };
+      const inputs = { input: [{ id: 1, answer: '1' }] };
 
       // when
-      await controller.submit(inputs);
+      await controller.submit({ input: JSON.stringify(inputs) });
 
       // then
       expect(service.results).toBeCalledWith(inputs);

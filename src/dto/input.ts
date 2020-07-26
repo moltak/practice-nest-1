@@ -4,5 +4,5 @@ export interface Input {
 }
 
 export interface Inputs {
-  inputs: Input[];
+  input: string;
 }
