@@ -1,37 +1,20 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Problem, Problems } from './payload/problem';
-import { Result, Results } from './payload/result';
+import { Problems } from './payload/problem';
+import { Results } from './payload/result';
+import { Inputs } from './payload/input';
 
 @Controller('/api')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get('/fetchProblem')
-  fetchProblem(): Problems {
-    const problems: Problem[] = [
-      {
-        id: 1,
-        problem_text: '135 + 267 = ?',
-        type: 1,
-        choices: '[382,392,402,412,422]',
-        answer: '3',
-      },
-    ];
-
-    return { problems };
+  fetchProblem(): Promise<Problems> {
+    return this.appService.problems();
   }
 
   @Post('/submit')
-  submit(): Results {
-    const results: Result[] = [
-      {
-        id: 1,
-        answer: '2',
-        result: false,
-      },
-    ];
-
-    return { results };
+  submit(@Body('input') inputs: Inputs): Promise<Results> {
+    return this.appService.results(inputs);
   }
 }
