@@ -1,10 +1,11 @@
 {
   "type": "sqlite",
   "database": "knowRe.sqlite",
-  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "entities": ["dist/src/entity/*.entity{.ts,.js}"],
   "synchronize": false,
   "logging": true,
-  "migrations": ["migration/*.ts"],
+  "migrations": ["dist/migrations/*.js"],
   "cli": {
-    "migrationsDir": "migration"
-  }}
+    "migrationsDir": "migrations"
+  }
+}

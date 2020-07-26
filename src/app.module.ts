@@ -10,7 +10,7 @@ import { ResultEntity } from './entity/result.entity';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'static'),
+      rootPath: join(__dirname, '..', 'public'),
       renderPath: '/',
     }),
     TypeOrmModule.forRoot(),

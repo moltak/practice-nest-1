@@ -13,7 +13,7 @@ export class ResultEntity {
     type => ProblemEntity,
     problem => problem.id,
   )
-  problem: ProblemEntity;
+  problems: ProblemEntity[];
 
   @Column()
   answer: string;
